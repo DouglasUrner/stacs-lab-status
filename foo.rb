@@ -3,6 +3,7 @@ require "sinatra"
 
 JH105_MACHINES = File.read("jh105.txt").split("\n")
 JH110_MACHINES = File.read("jh110.txt").split("\n")
+JC035_MACHINES = File.read("jc035.txt").split("\n")
 
 def get_status(hostnames)
   Parallel.map(hostnames, in_threads: 16) do |m|
@@ -28,5 +29,6 @@ set :port, 22623
 get "/labs" do
   jh105 = get_status(JH105_MACHINES)
   jh110 = get_status(JH110_MACHINES)
-  erb :machines, locals: {jh105: jh105, jh110: jh110}
+  jc035 = get_status(JC035_MACHINES)
+  erb :machines, locals: {jh105: jh105, jh110: jh110, jc035: jc035}
 end
