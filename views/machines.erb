@@ -1,0 +1,51 @@
+<!doctype html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.machine {
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+}
+.open {
+  background-color: #00dd00;
+}
+.down {
+  background-color: #dddddd;
+}
+.in_use {
+  background-color: #dd0000;
+}
+.ssh {
+  background-color: #dddd00;
+}
+</style>
+</head>
+<body>
+  <h1>StA CS Lab Availability</h1>
+  <p>
+  Status meanings:
+  </p>
+  <ul>
+    <li> "open" means the machine is available to use. </li>
+    <li> "ssh" means there's nobody sitting at the machine, but somebody's using it over SSH. (So you'll have to share CPU with somebody.) </li>
+    <li> "in_use" means somebody's sitting at the machine. </li>
+    <li> "down" means the machine is off, running Windows, or disconnected from the network. </li>
+  </ul>
+  <p> All machines listed are available for in-person use during COVID. </p>
+  <p> This was hacked up in a few hours. I accept no responsibility if a bug caues you to walk all the way from DRA only to find that all the machines are taken. If there are any issues, contact gbs3@. </p>
+  <h2>JH105</h2>
+  <% jh105.each do |m| %>
+    <div class="machine <%=m[1]%>">
+      <div class="name"><%=m[0]%></div>
+      <div class="status"><%=m[1]%></div>
+    </div>
+  <% end %>
+  <h2>JH110</h2>
+  <% jh110.each do |m| %>
+    <div class="machine <%=m[1]%>">
+      <div class="name"><%=m[0]%></div>
+      <div class="status"><%=m[1]%></div>
+    </div>
+  <% end %>
+</body>
